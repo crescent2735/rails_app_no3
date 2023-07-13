@@ -1,0 +1,16 @@
+<!-- コメント作成フォーム -->
+<% provide(:title, 'Create comment') %>
+<h2>コメント作成</h2>
+
+<div class="row">
+  <div class="col-md-6 col-md-offset-3">
+    <%= form_with(model: [@board, Comment.new], url: board_comments_path(@board)) do |f| %>
+      <%= render 'shared/error_messages', object: f.object %>
+      
+      <%= f.label :コメント内容 %>
+      <%= f.text_area :content, class: 'form-control' %>
+
+      <%= f.submit "コメント投稿", class: "btn btn-primary" %>
+    <% end %>
+  </div>
+</div>

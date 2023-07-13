@@ -1,0 +1,15 @@
+<% provide(:title, 'All boards') %>
+<h1>掲示板一覧</h1>
+
+<ul class="boards">
+  <% @boards.each do |board| %>
+    <li>
+      <%= link_to board.title, board %>
+      <span class="timestamp">
+        <%= time_ago_in_words(board.created_at) %> 前に作成
+      </span>
+    </li>
+  <% end %>
+</ul>
+
+<%= link_to "新規掲示板作成", new_board_path %>

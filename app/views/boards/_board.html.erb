@@ -1,0 +1,7 @@
+<li id="board-<%= board.id %>">
+  <span class="user"><%= link_to board.user.name, board.user %></span>
+  <span class="title"><%= board.title %></span>
+  <span class="timestamp">
+    Posted <%= time_ago_in_words(board.created_at) %> ago.
+  </span>
+</li>

@@ -1,0 +1,40 @@
+<h1><%= @board.title %></h1>
+<!-- if文でまずコメント・募集あるか→あればそれを表示、なければ"投稿がありません"と表示 -->
+<!-- ここに掲示板の中身、コメントと募集表示 -->
+<!-- コメントとゲーム募集の一覧の表示 -->
+<table>
+  <thead>
+    <tr>
+      <th>投稿者</th>
+      <th>内容</th>
+      <th>詳細</th>
+      <th>投稿日時</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @threads.each do |thread| %>
+      <% if thread.is_a?(Comment) %>
+        <% comment = thread %>
+        <tr>
+          <td><%= comment.user.name %></td>
+          <td><%= comment.content %></td>
+          <td> </td>
+          <td><%= comment.created_at %></td>
+        </tr>
+      <% elsif thread.is_a?(GameRecruitment) %>
+        <% game_recruitment = thread %>
+        <tr>
+          <td><%= game_recruitment.user.name %></td>
+          <td><%= game_recruitment.description %></td>
+          <td>募集人数：<%= game_recruitment.num_players %></td>
+          <td><%= game_recruitment.created_at %></td>
+        </tr>
+      <% end %>
+    <% end %>
+  </tbody>
+</table>
+<!-- 一番下にコメント作成フォーム・募集作成ボタン→フォームに飛ぶ -->
+<%= render partial: 'comments/new' %>
+
+<%= render partial: 'game_recruitments/new' %>
+<!-- 表示のイメージとしてはラインのような感じ、表示内容はユーザーの名前、アイコン、内容、タイムスタンプ -->

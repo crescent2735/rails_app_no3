@@ -1,0 +1,2 @@
+module GameRecruitmentHelper
+end
