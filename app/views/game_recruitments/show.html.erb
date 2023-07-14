@@ -1,0 +1,16 @@
+<% provide(:title, @game_recruitment.game_title) %>
+<div class="row">
+  <aside class="col-md-4">
+    <section class="user_info">
+      <h1>
+        ゲームモード：<%= @game_recruitment.game_title %>
+      <h1>
+      <p>
+        詳細コメント：<%= @game_recruitment.description %>
+        募集ユーザー：<%= @game_recruitment.user.name %>
+        募集人数：<%= @game_recruitment.num_players %>
+      </p>
+    </section>
+    <%= render partial: 'requests/new' %>
+  </aside>
+</div>

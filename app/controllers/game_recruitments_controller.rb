@@ -18,6 +18,11 @@ class GameRecruitmentsController < ApplicationController
     end
   end
 
+  def show
+    @board = Board.find(params[:board_id])
+    @game_recruitment = GameRecruitment.find(params[:id])
+  end
+
   private
     def game_recruitment_params
       params.require(:game_recruitment).permit(:game_title, :description, :num_players)

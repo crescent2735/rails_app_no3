@@ -26,7 +26,7 @@
         <tr>
           <td><%= game_recruitment.user.name %></td>
           <td><%= game_recruitment.description %></td>
-          <td>募集人数：<%= game_recruitment.num_players %></td>
+          <td><%= link_to "詳細表示", board_game_recruitment_path(@board, game_recruitment) %></td>
           <td><%= game_recruitment.created_at %></td>
         </tr>
       <% end %>

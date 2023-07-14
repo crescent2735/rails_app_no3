@@ -1,0 +1,23 @@
+<!-- game_recruitmentのidが同一かつgame_recruitmentのuser_idが同一のもののみ表示 -->
+<!-- リクエストの配列を作成 -->
+<!-- ログイン中のユーザーが作成した募集のリクエストを表示 -->
+<table>
+  <thead>
+    <tr>
+      <th>募集タイトル</th>
+      <th>リクエストユーザー</th>
+      <th>ひとこと</th>
+      <th>投稿日時</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @requests.each do |request| %>
+      <tr>
+        <td><%= request.game_recruitment.game_title %></td>
+        <td><%= request.user.name %></td>
+        <td><%= request.content %></td>
+        <td><%= request.created_at %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
