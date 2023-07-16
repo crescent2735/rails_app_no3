@@ -1,13 +1,15 @@
 <!-- game_recruitmentのidが同一かつgame_recruitmentのuser_idが同一のもののみ表示 -->
 <!-- リクエストの配列を作成 -->
 <!-- ログイン中のユーザーが作成した募集のリクエストを表示 -->
-<table>
+<h2>認証待ちリクエスト</h2>
+<table class="request-table">
   <thead>
     <tr>
       <th>募集タイトル</th>
       <th>リクエストユーザー</th>
-      <th>ひとこと</th>
+      <th>メッセージ</th>
       <th>投稿日時</th>
+      <th>リクエスト認証</th>
     </tr>
   </thead>
   <tbody>
@@ -17,7 +19,16 @@
         <td><%= request.user.name %></td>
         <td><%= request.content %></td>
         <td><%= request.created_at %></td>
+        <td>
+          <div class="button-group">
+            <%= button_to '許可する', board_game_recruitment_request_path(@board, @game_recruitment, request), method: :patch, class: 'approve-button' %>
+            <%= button_to '許可しない', board_game_recruitment_request_path(@board, @game_recruitment, request), method: :delete, class: 'reject-button' %>
+          </div>
+        </td>
       </tr>
+      <!-- 許可ボタンと許可しないボタンを作成 -->
+      <!-- 許可ボタンを押された時、リクエストを送ったユーザーにチャンネル名を通知する -->
+      <!-- 許可しないボタンを押された時、リクエストが削除される -->
     <% end %>
   </tbody>
 </table>

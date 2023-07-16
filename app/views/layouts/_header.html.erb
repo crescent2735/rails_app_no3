@@ -1,16 +1,21 @@
-<header class="navbar navbar-fixed-top navbar-inverse">
+<header class="navbar navbar-fixed-top navbar-inverse header-bg">
   <div class="container">
-    <!-- ここで概要(アプリ詳細画面作成)に飛ぶ -->
-    <%= link_to "スプラ３フレンド募集掲示板", '#', id: "logo" %>
-    <nav>
-      <ul class="nav navbar-nav navbar-right">
-        <li><%= link_to "掲示板一覧",   root_path %></li>
-        <li><%= link_to "ログイン", login_path %></li>
-        <!-- リクエストリンク表記正しくない。直す -->
-        <% if @board && @game_recruitment %>
-          <li><%= link_to "リクエスト", board_game_recruitment_request_path(@board, @game_recruitment) %></li>
-        <% end %>
-      </ul>
-    </nav>
+    <div class="header-content">
+      <!-- ここで概要(アプリ詳細画面作成)に飛ぶ -->
+      <h1 class="title"><%= link_to "スプラ３フレンド募集掲示板", '#', id: "logo" %></h1>
+      <button class="hamburger-menu" type="button" aria-expanded="false">
+        <span class="hamburger-icon"></span>
+      </button>
+      <nav>
+        <ul class="nav navbar-nav navbar-right">
+          <li><%= link_to "掲示板一覧",   root_path %></li>
+          <li><%= link_to "ログイン", login_path %></li>
+          <!-- リクエストリンク表記正しくない。直す -->
+          <% if @board && @game_recruitment %>
+            <li><%= link_to "リクエスト", board_game_recruitment_request_path(@board, @game_recruitment) %></li>
+          <% end %>
+        </ul>
+      </nav>
+    </div>
   </div>
 </header>

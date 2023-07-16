@@ -33,10 +33,29 @@ class RequestsController < ApplicationController
     end
   end
 
+  def update
+    @request = Request.find(params[:id])
+    if @request.update(request_params)
+      # リクエストを許可する処理
+      @request.game_recruitment.update(channel_name: @request.game_recruitment.channel_name)
+      redirect_to board_game_recruitment_request_path(@request.game_recruitment.board, @request.game_recruitment), notice: "リクエストを許可しました。"
+    else
+      # 更新が失敗した場合の処理
+      redirect_to board_game_recruitment_request_path(@request.game_recruitment.board, @request.game_recruitment), alert: "リクエストの更新に失敗しました。"
+    end
+  end
+  
+
+  def destroy
+    Request.find(params[:id]).destroy
+    flash[:success] = "リクエストを取り消しました"
+    redirect_to root_url, status: :see_other
+  end
+
   private
 
   def request_params
-    params.require(:request).permit(:user_id, :content)
+    params.permit(:user_id, :content)
   end
 
 end

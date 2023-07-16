@@ -1,15 +1,619 @@
-/*
- * This is a manifest file that'll be compiled into application.css, which will include all the files
- * listed below.
- *
- * Any CSS (and SCSS, if configured) file within this directory, lib/assets/stylesheets, or any plugin's
- * vendor/assets/stylesheets directory can be referenced here using a relative path.
- *
- * You're free to add application-wide styles to this file and they'll appear at the bottom of the
- * compiled file so the styles you add here take precedence over styles defined in any other CSS
- * files in this directory. Styles in this file should be added after the last require_* statement.
- * It is generally better to create a new file per style scope.
- *
- *= require_tree .
- *= require_self
- */
+  /* ヘッダー */
+  .header-bg {
+    background-image: url('mRM5ZdvJEEcOLQU1689508784_1689508821.png');
+    background-size: cover;
+    background-position: center;
+    position: relative;
+    width: 100%;
+    height: 200px; /* ヘッダーの高さを200pxに設定 */
+  }
+
+  .header-content {
+    display: flex;
+    align-items: center;
+  }
+  
+  .header-bg .title {
+    flex: 1; /* タイトルが残りの領域を占めるようにする */
+    font-size: 28px; /* タイトルのフォントサイズを指定 */
+    font-weight: bold; /* タイトルの太さを指定 */
+    color: #000; /* タイトルの文字色を指定 */
+    padding: 10px; /* タイトルの内側の余白を指定 */
+  }
+
+  .navbar-nav {
+    display: flex;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  
+  .navbar-nav li {
+    margin-left: 10px;
+  }
+  
+  .hamburger-menu {
+    display: none; /* 初期状態では非表示 */
+  }
+  
+  /* メディアクエリ: 幅が狭まるとハンバーガーメニューを表示 */
+  @media screen and (max-width: 768px) {
+    .navbar-nav {
+      display: none; /* メニュー非表示 */
+    }
+    .hamburger-menu {
+      display: block; /* ハンバーガーメニュー表示 */
+    }
+  }
+  
+  /* 中身 */
+  .main {
+    background-color: lightblue;
+    height: 300px;
+  }
+
+  .board-list {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px;
+    border: 1px solid #ccc;
+    transition: background-color 0.3s ease; /* ホバーエフェクトのトランジション効果 */
+  }
+  
+  .board-list:hover {
+    background-color: #f5f5f5; /* ホバーエフェクト時の背景色 */
+  }
+  
+  .board-images {
+    display: flex;
+    flex-direction: row; /* 横一列に並べるために追加 */
+    width: 100px;
+    height: 100px;
+    margin-right: 10px;
+    object-fit: cover;
+  }
+  
+  .board-list .board-title {
+    flex-grow: 1;
+  }
+
+  .board-new {
+    text-align: center; /* テキストを中央に配置 */
+    margin-top: 20px; /* 上部の余白を追加 */
+  }
+  
+  .board-new a {
+    display: inline-block; /* リンクをブロック要素に変更 */
+    padding: 10px 20px; /* パディングを追加 */
+    background-color: #808080; /* 背景色を設定 */
+    color: #fff; /* テキスト色を設定 */
+    font-weight: bold; /* フォントの太さを設定 */
+    text-decoration: none; /* 下線をなくす */
+    border-radius: 5px; /* 角丸にする */
+    transition: background-color 0.3s ease; /* ホバーエフェクトのトランジション効果 */
+  }
+  
+  .board-new a:hover {
+    background-color: #888888; /* ホバーエフェクト時の背景色 */
+  }
+
+  .create-board-container {
+    max-width: 600px; /* コンテナの最大幅を指定 */
+    margin: 0 auto; /* 中央に配置するために左右のマージンを自動に設定 */
+    padding: 20px; /* 内側の余白を指定 */
+    background-color: #f5f5f5; /* 背景色を指定 */
+    border: 1px solid #ccc; /* ボーダーを指定 */
+    border-radius: 5px; /* 角丸を指定 */
+  }
+  
+  .create-board-title {
+    font-size: 24px; /* タイトルのフォントサイズを指定 */
+    margin-bottom: 20px; /* 下側のマージンを指定 */
+  }
+  
+  .create-board-form {
+    margin-bottom: 20px; /* フォームの下側のマージンを指定 */
+  }
+  
+  .create-board-label {
+    font-weight: bold; /* ラベルのフォントの太さを指定 */
+  }
+  
+  .create-board-input {
+    width: 100%; /* 入力フィールドの幅を100%に設定 */
+    padding: 10px; /* 入力フィールドの内側の余白を指定 */
+    border: 1px solid #ccc; /* 入力フィールドのボーダーを指定 */
+    border-radius: 5px; /* 入力フィールドの角丸を指定 */
+  }
+  
+  .create-board-submit {
+    background-color: #007bff; /* ボタンの背景色を指定 */
+    color: #fff; /* ボタンのテキスト色を指定 */
+    padding: 10px 20px; /* ボタンの内側の余白を指定 */
+    border: none; /* ボタンのボーダーをなしに設定 */
+    border-radius: 5px; /* ボタンの角丸を指定 */
+    cursor: pointer; /* マウスカーソルをポインターに設定 */
+  }
+
+  .board-title {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 20px;
+  }
+  
+  .board-content {
+    margin-bottom: 20px;
+  }
+  
+  .thread-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+  }
+  
+  .thread-table th,
+  .thread-table td {
+    padding: 10px;
+    border: 1px solid #ccc;
+  }
+  
+  .thread-table th {
+    background-color: #f5f5f5;
+    text-align: left;
+    font-weight: bold;
+  }
+
+  .thread-table th.content-cell {
+    width: 60%; /* 内容セルの幅を広く設定 */
+  }
+  
+  .thread-table th.timestamp-cell {
+    width: 15%; /* 投稿日時セルの幅を狭く設定 */
+  }
+
+  .thread-table tr:nth-child(even) {
+    background-color: #f9f9f9;
+  }
+  
+  .thread-content {
+    background-color: #ffffcc; /* 目立たせるための背景色 */
+  }
+  
+  .thread-content p {
+    color: #ff0000; /* 目立たせるためのテキスト色 */
+    font-weight: bold;
+  }
+  
+  .thread-user {
+    display: flex;
+    align-items: center;
+    margin-bottom: 5px;
+  }
+  
+  .thread-user img {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    margin-right: 10px;
+  }
+  
+  .thread-details {
+    display: flex;
+    justify-content: space-between;
+  }
+  
+  .thread-details a {
+    padding: 5px 10px;
+    background-color: #f5f5f5;
+    color: #000;
+    text-decoration: none;
+  }
+  
+  .thread-form {
+    margin-top: 20px;
+  }
+
+  .comment-form {
+    background-color: #f5f5f5;
+    border: 1px solid #ccc;
+    padding: 10px;
+  }
+  
+  .comment-form .form-group {
+    margin-bottom: 10px;
+  }
+  
+  .comment-form label {
+    font-weight: bold;
+  }
+  
+  .comment-form .form-control {
+    width: 100%;
+    padding: 6px 12px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+  }
+  
+  .comment-form .btn-primary {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+  }
+  
+  .comment-form .btn-primary:hover {
+    background-color: #0056b3;
+  }
+
+  .game-recruitment-form {
+    background-color: #f5f5f5;
+    border: 1px solid #ccc;
+    padding: 10px;
+  }
+  
+  .game-recruitment-form .form-group {
+    margin-bottom: 10px;
+  }
+  
+  .game-recruitment-form label {
+    font-weight: bold;
+  }
+  
+  .game-recruitment-form .form-control {
+    width: 100%;
+    padding: 6px 12px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+  }
+  
+  .game-recruitment-form .btn-primary {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+  }
+  
+  .game-recruitment-form .btn-primary:hover {
+    background-color: #0056b3;
+  }
+
+  .game-recruitment-info {
+    background-color: #f5f5f5;
+    border: 1px solid #ccc;
+    padding: 10px;
+  }
+  
+  .game-recruitment-info h1 {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 10px;
+  }
+  
+  .game-recruitment-info h2 {
+    font-size: 18px;
+    margin-bottom: 10px;
+  }
+  
+  .game-recruitment-info p {
+    margin-bottom: 10px;
+  }
+  
+  .game-recruitment-info .user-info {
+    margin-bottom: 20px;
+  }
+
+  .request-form {
+    background-color: #f5f5f5;
+    border: 1px solid #ccc;
+    padding: 10px;
+  }
+  
+  .request-form h2 {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 10px;
+  }
+  
+  .request-form label {
+    font-weight: bold;
+    margin-bottom: 5px;
+  }
+  
+  .request-form textarea {
+    width: 100%;
+    height: 50px;
+    padding: 5px;
+    margin-bottom: 10px;
+  }
+  
+  .request-form input[type="submit"] {
+    display: block;
+    width: 100%;
+    margin-top: 10px;
+  }
+
+  .request-table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  
+  .request-table th,
+  .request-table td {
+    padding: 8px;
+    border-bottom: 1px solid #ccc;
+  }
+  
+  .request-table th {
+    background-color: #f5f5f5;
+    text-align: left;
+  }
+  
+  .request-table td:last-child {
+    text-align: center;
+  }
+  
+  .request-table button {
+    padding: 5px 10px;
+    margin-right: 5px;
+    background-color: #e0e0e0;
+    border: none;
+    cursor: pointer;
+  }
+
+  .button-group {
+    display: flex;
+  }
+  
+  .approve-button,
+  .reject-button {
+    margin-right: 10px;
+  }
+  
+  .request-table button:hover {
+    background-color: #ccc;
+  }
+
+  .request-table button.approve-button {
+    padding: 5px 10px;
+    margin-right: 5px;
+    background-color: #4caf50;
+    border: none;
+    color: white;
+    cursor: pointer;
+  }
+  
+  .request-table button.approve-button:hover {
+    background-color: #45a049;
+  }
+
+  .login-form {
+    max-width: 400px;
+    margin: 0 auto;
+  }
+  
+  .login-form h1 {
+    text-align: center;
+    font-size: 24px;
+    margin-bottom: 20px;
+  }
+  
+  .login-form label {
+    font-weight: bold;
+  }
+  
+  .login-form input[type="email"],
+  .login-form input[type="password"] {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 10px;
+  }
+  
+  .login-form .checkbox {
+    display: flex;
+    align-items: center;
+  }
+  
+  .login-form .checkbox input[type="checkbox"] {
+    margin-right: 5px;
+  }
+  
+  .login-form .submit-button {
+    width: 100%;
+    margin-top: 20px;
+  }
+  
+  .login-form .signup-link {
+    text-align: center;
+    margin-top: 20px;
+  }
+  
+  .login-form .note {
+    margin-top: 20px;
+    font-size: 14px;
+  }
+  
+  .login-form .note span {
+    font-weight: bold;
+  }
+
+  .login-form .submit-button {
+    width: 100%;
+    margin-top: 20px;
+    background-color: #4caf50; /* ボタンの背景色 */
+    color: white; /* ボタンの文字色 */
+    padding: 10px;
+    font-size: 16px;
+    font-weight: bold;
+    border: none;
+    cursor: pointer;
+  }
+  
+  .login-form .submit-button:hover {
+    background-color: #45a049; /* ホバーエフェクト時の背景色 */
+  }
+
+  .forgot-password-form {
+    background-color: #f5f5f5;
+    padding: 20px;
+    border: 1px solid #ccc;
+  }
+  
+  .forgot-password-form h1 {
+    font-size: 24px;
+    margin-bottom: 10px;
+  }
+  
+  .forgot-password-form label {
+    display: block;
+    margin-bottom: 10px;
+  }
+  
+  .forgot-password-form input[type="email"] {
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+  }
+  
+  .forgot-password-form .submit-button {
+    width: 100%;
+    margin-top: 20px;
+    background-color: #4caf50;
+    color: white;
+    padding: 10px;
+    font-size: 16px;
+    font-weight: bold;
+    border: none;
+    cursor: pointer;
+  }
+  
+  .forgot-password-form .submit-button:hover {
+    background-color: #45a049;
+  }
+
+  .reset-password-form {
+    background-color: #f5f5f5;
+    padding: 20px;
+    border: 1px solid #ccc;
+  }
+  
+  .reset-password-form h1 {
+    font-size: 24px;
+    margin-bottom: 10px;
+  }
+  
+  .reset-password-form label {
+    display: block;
+    margin-bottom: 10px;
+  }
+  
+  .reset-password-form input[type="password"] {
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+  }
+  
+  .reset-password-form .submit-button {
+    width: 100%;
+    margin-top: 20px;
+    background-color: #4caf50;
+    color: white;
+    padding: 10px;
+    font-size: 16px;
+    font-weight: bold;
+    border: none;
+    cursor: pointer;
+  }
+  
+  .reset-password-form .submit-button:hover {
+    background-color: #45a049;
+  }
+
+  .signup-form {
+    background-color: #f5f5f5;
+    padding: 20px;
+    border: 1px solid #ccc;
+  }
+  
+  .signup-form h1 {
+    font-size: 24px;
+    margin-bottom: 10px;
+  }
+  
+  .signup-form label {
+    display: block;
+    margin-bottom: 10px;
+  }
+  
+  .signup-form input[type="text"],
+  .signup-form input[type="email"],
+  .signup-form input[type="password"] {
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+  }
+  
+  .signup-form .btn-primary {
+    width: 100%;
+    margin-top: 20px;
+    background-color: #4caf50;
+    color: white;
+    padding: 10px;
+    font-size: 16px;
+    font-weight: bold;
+    border: none;
+    cursor: pointer;
+  }
+  
+  .signup-form .btn-primary:hover {
+    background-color: #45a049;
+  }
+
+  /* フッター */
+  .footer {
+    position: relative; /* 相対的な位置指定を行うために追加 */
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: #f5f5f5; /* フッターの背景色を指定 */
+    padding: 10px 20px; /* フッターの内側の余白を指定 */
+  }
+  
+  .background-image-left,
+  .background-image-right {
+    position: absolute; /* 絶対的な位置指定を行うために追加 */
+    top: 0;
+    width: 50px; /* 画像の幅を指定 */
+    height: 100%; /* 画像の高さを指定 */
+    background-repeat: no-repeat;
+    background-size: contain; /* 画像を要素内に収めるために追加 */
+  }
+  
+  .background-image-left {
+    left: 0; /* 左端に配置 */
+    background-image: url('pV9vsauPOPyjcc31689512346_1689512377.png'); /* 画像のパスを指定 */
+    margin-right: 30px; /* メニューとの間隔を調整 */
+  }
+  
+  .background-image-right {
+    right: 0; /* 右端に配置 */
+    background-image: url('xmcjchIlBI4jV1g1689512089_1689512195.png'); /* 画像のパスを指定 */
+  }
+  
+  .footer-content {
+    display: flex;
+    align-items: center;
+  }
+  
+  .footer-content small {
+    margin-right: 10px;
+  }
+  
+  .footer-content nav ul {
+    display: flex;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  
+  .footer-content nav li {
+    margin-right: 10px;
+  }

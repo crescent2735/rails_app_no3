@@ -1,15 +1,24 @@
 <% provide(:title, 'All boards') %>
 <h1>掲示板一覧</h1>
 
-<ul class="boards">
+<div class="board-images">
+  <%= image_tag("https://1.bp.blogspot.com/-IGD1pcj4ZB0/VYJrp4qVaWI/AAAAAAAAuh4/VsP1Hq5qtBo/s800/mizudeppou_kids.png", class: "board-image") %>
+  <%= image_tag("https://2.bp.blogspot.com/-mzWBsNqN1bw/WWNAb3v_zyI/AAAAAAABFTI/kF3HUfmohXUm9tXe8CFuN_NKhM-EhVysACLcBGAs/s800/cardgame_deck_hiku.png", class: "board-image") %>
+  <%= image_tag("https://1.bp.blogspot.com/-FOgVHlaxPKA/X1CLAgKjKhI/AAAAAAABay8/J8FcS8pg_vUYS2S-OIKLJgVtgw9f0jMRACNcBGAsYHQ/s1600/kigurumi_necchusyou_man.png", class: "board-image") %>
+</div>
+<div class="board-lists">
   <% @boards.each do |board| %>
-    <li>
-      <%= link_to board.title, board %>
-      <span class="timestamp">
-        <%= time_ago_in_words(board.created_at) %> 前に作成
-      </span>
-    </li>
+    <div class="board-list">
+      <li>
+        <%= link_to board.title, board %>
+        <span class="timestamp">
+          <%= time_ago_in_words(board.created_at) %> 前に作成
+        </span>
+      </li>
+    </div>
   <% end %>
-</ul>
+</div>
 
-<%= link_to "新規掲示板作成", new_board_path %>
+<div class="board-new">
+  <%= link_to "新規掲示板作成", new_board_path %>
+</div>

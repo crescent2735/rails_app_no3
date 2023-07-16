@@ -18,7 +18,7 @@ Rails.application.routes.draw do
   resources :password_resets,     only: [:new, :create, :edit, :update]
   resources :boards do
     resources :game_recruitments, only: [:new, :create, :show] do
-      resources :requests, only: [:new, :create, :show]
+      resources :requests, only: [:new, :create, :show, :update, :destroy]
     end
     resources :comments, only: [:new, :create, :show]
   end
