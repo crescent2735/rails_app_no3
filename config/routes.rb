@@ -1,8 +1,7 @@
 Rails.application.routes.draw do
-  get 'static_pages/about'
-  get 'static_pages/how_to_channel'
-  get 'static_pages/contact'
-  get 'static_pages/approval_request'
+  get '/about', to: 'static_pages#about'
+  get '/how_to_channel', to: 'static_pages#how_to_channel'
+  get '/contact', to: 'static_pages#contact'
   get 'requests/new'
   root 'boards#index'
   get 'password_resets/new'

@@ -9,7 +9,7 @@
 
       <div class="form-group">
         <%= f.label :ゲームモード %>
-        <%= f.text_field :game_title, class: 'form-control' %>
+        <%= f.select :game_mode, options_for_select(['ナワバリバトル', 'バンカラマッチ', 'サーモンラン', 'ナワバトラー']), { include_blank: true }, class: 'form-control' %>
       </div>
 
       <div class="form-group">

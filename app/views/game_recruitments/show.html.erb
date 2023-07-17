@@ -14,6 +14,10 @@
         募集人数：<%= @game_recruitment.num_players %>
       </p>
     </section>
-    <%= render partial: 'requests/new' %>
+    <% if logged_in? %>
+      <%= render partial: 'requests/new' %>
+    <% else %>
+      <%= link_to "ログイン", login_path %>することで参加リクエストの申請が可能になります。
+    <% end %>
   </aside>
 </div>

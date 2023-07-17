@@ -33,8 +33,12 @@
     <% end %>
   </tbody>
 </table>
-<!-- 一番下にコメント作成フォーム・募集作成ボタン→フォームに飛ぶ -->
-<%= render partial: 'comments/new' %>
 
-<%= render partial: 'game_recruitments/new' %>
-<!-- 表示のイメージとしてはラインのような感じ、表示内容はユーザーの名前、アイコン、内容、タイムスタンプ -->
+<% if logged_in? %>
+  <!-- 一番下にコメント作成フォーム・募集作成ボタン→フォームに飛ぶ -->
+  <%= render partial: 'comments/new' %>
+  <%= render partial: 'game_recruitments/new' %>
+  <!-- 表示のイメージとしてはラインのような感じ、表示内容はユーザーの名前、アイコン、内容、タイムスタンプ -->
+<% else %>
+  <%= link_to "ログイン", login_path %>することでコメントと募集の作成が可能になります。
+<% end %>

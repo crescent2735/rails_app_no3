@@ -1,9 +1,15 @@
 <% provide(:title, 'All boards') %>
-<h1>掲示板一覧</h1>
+<h1 class="title-with-image">
+  <%= image_tag("pV9vsauPOPyjcc31689512346_1689512377.png", class: "left-image") %>
+  掲示板一覧
+  <%= image_tag("xmcjchIlBI4jV1g1689512089_1689512195.png", class: "right-image") %>
+</h1>
 
 <div class="board-images">
   <%= image_tag("https://1.bp.blogspot.com/-IGD1pcj4ZB0/VYJrp4qVaWI/AAAAAAAAuh4/VsP1Hq5qtBo/s800/mizudeppou_kids.png", class: "board-image") %>
+  <span class="image-space"></span>
   <%= image_tag("https://2.bp.blogspot.com/-mzWBsNqN1bw/WWNAb3v_zyI/AAAAAAABFTI/kF3HUfmohXUm9tXe8CFuN_NKhM-EhVysACLcBGAs/s800/cardgame_deck_hiku.png", class: "board-image") %>
+  <span class="image-space"></span>
   <%= image_tag("https://1.bp.blogspot.com/-FOgVHlaxPKA/X1CLAgKjKhI/AAAAAAABay8/J8FcS8pg_vUYS2S-OIKLJgVtgw9f0jMRACNcBGAsYHQ/s1600/kigurumi_necchusyou_man.png", class: "board-image") %>
 </div>
 <div class="board-lists">
@@ -19,6 +25,10 @@
   <% end %>
 </div>
 
-<div class="board-new">
-  <%= link_to "新規掲示板作成", new_board_path %>
-</div>
+<% if logged_in? %>
+  <div class="board-new">
+    <%= link_to "新規掲示板作成", new_board_path %>
+  </div>
+<% else %>
+<%= link_to "ログイン", login_path %>することで新規掲示板の作成が可能になります。
+<% end %>
