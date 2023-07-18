@@ -44,8 +44,6 @@ Rails.application.configure do
   host = 'localhost:3000'
   config.action_mailer.default_url_options = { host: host, protocol: 'http' }
 
-  config.hosts << "rails-app-no3.onrender.com"
-
   config.action_mailer.perform_caching = false
 
   # Print deprecation notices to the Rails logger.
