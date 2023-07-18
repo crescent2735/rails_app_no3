@@ -1,18 +1,19 @@
+version: '3'
 databases:
-  - name: rails_app_no3_db
+  - name: mysite
     databaseName: rails_app_no3_db
     user: rails_app_no3_db_user
 
 services:
-  - type: web
-    name: mysite
-    runtime: docker
-    buildCommand: "./bin/render-build.sh"
-    startCommand: "bundle exec puma -C config/puma.rb"
-    envVars:
-      - key: DATABASE_URL
-        fromDatabase:
-          name: mysite
-          property: connectionString
-      - key: RAILS_MASTER_KEY
-        sync: false
+  web:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    command: bundle exec puma -C config/puma.rb
+    environment:
+      DATABASE_URL: "postgresql://rails_app_no3_db_user:password@mysite/rails_app_no3_db"
+      RAILS_MASTER_KEY: "8464052bdd36b3fd284e28ad09d197ad"
+    volumes:
+      - .:/app
+    ports:
+      - "3000:3000"
