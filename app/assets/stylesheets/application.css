@@ -15,7 +15,7 @@
   
   .header-bg .title {
     flex: 1; /* タイトルが残りの領域を占めるようにする */
-    font-size: 28px; /* タイトルのフォントサイズを指定 */
+    font-size: 23px; /* タイトルのフォントサイズを指定 */
     font-weight: bold; /* タイトルの太さを指定 */
     color: #000; /* タイトルの文字色を指定 */
     padding: 10px; /* タイトルの内側の余白を指定 */
@@ -35,16 +35,62 @@
   .hamburger-menu {
     display: none; /* 初期状態では非表示 */
   }
+
+  .hamburger-menu .icon-bar {
+    display: block;
+    width: 22px;
+    height: 2px;
+    margin: 6px 0;
+    background-color: #fff;
+  }
+
+  .dropdown-menu {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+  }
   
-  /* メディアクエリ: 幅が狭まるとハンバーガーメニューを表示 */
-  @media screen and (max-width: 768px) {
-    .navbar-nav {
-      display: none; /* メニュー非表示 */
-    }
+  .dropdown-menu li {
+    padding: 8px 12px;
+  }
+  
+  .dropdown:hover .dropdown-menu {
+    display: block;
+  }
+
+  @media (max-width: 767px) {
     .hamburger-menu {
-      display: block; /* ハンバーガーメニュー表示 */
+      display: block;
+    }
+  
+    .navbar-nav {
+      display: none;
+      position: absolute;
+      top: 100%;
+      left: 0;
+      width: 100%;
+      background-color: #333;
+    }
+  
+    .navbar-nav.show {
+      display: flex;
+      flex-direction: column;
+    }
+  
+    .navbar-nav li {
+      margin-left: 0;
+      text-align: center;
+      padding: 10px;
+    }
+  
+    .navbar-nav a {
+      color: #fff;
     }
   }
+
 
   /* タイトル */
 h1 {

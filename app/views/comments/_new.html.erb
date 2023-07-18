@@ -1,7 +1,6 @@
 <!-- コメント作成フォーム -->
 <% provide(:title, 'Create comment') %>
 <h2>コメント作成</h2>
-
 <div class="row">
   <div class="col-md-6 col-md-offset-3 comment-form">
     <%= form_with(model: [@board, Comment.new], url: board_comments_path(@board)) do |f| %>

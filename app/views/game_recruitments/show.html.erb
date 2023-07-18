@@ -1,3 +1,4 @@
+<!-- 募集詳細表示画面 -->
 <% provide(:title, @game_recruitment.game_title) %>
 <div class="row">
   <aside class="col-md-4 game-recruitment-info">
@@ -14,6 +15,7 @@
         募集人数：<%= @game_recruitment.num_players %>
       </p>
     </section>
+    <!-- ログイン済みユーザーのみ参加リクエスト申請が可能になる -->
     <% if logged_in? %>
       <%= render partial: 'requests/new' %>
     <% else %>

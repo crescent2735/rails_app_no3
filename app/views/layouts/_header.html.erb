@@ -1,19 +1,21 @@
+<!-- ヘッダー -->
 <header class="navbar navbar-fixed-top navbar-inverse header-bg">
   <div class="container">
     <div class="header-content">
-      <!-- ここで概要(アプリ詳細画面作成)に飛ぶ -->
+      <!-- タイトル（アプリ名） -->
       <h1 class="title"><%= link_to "スプラ３フレンド募集掲示板", about_path, id: "logo" %></h1>
       <button class="hamburger-menu" type="button" aria-expanded="false">
-        <span class="hamburger-icon"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
       </button>
-      <nav>
+      <!-- ヘッダー内メニュー -->
+      <nav class="header-menu">
         <ul class="nav navbar-nav navbar-right">
+          <li><%= link_to '掲示板一覧', root_path %></li>
+          <!-- ログイン済みユーザーのみアカウント・新規掲示板作成・リクエスト表示 -->
           <% if logged_in? %>
-            <li><%= link_to '掲示板一覧', root_path %></li>
             <li><%= link_to '新規掲示板作成', new_board_path %></li>
-            <% if @board && @game_recruitment %>
-              <li><%= link_to 'リクエスト一覧', board_game_recruitment_request_path(@board, @game_recruitment) %></li>
-            <% end %>
             <li class="dropdown">
               <a href="#" id="account" class="dropdown-toggle">
                 アカウント <b class="caret"></b>
@@ -24,11 +26,13 @@
                 <li class="divider"></li>
                 <li>
                   <%= link_to "ログアウト", logout_path,
-                                       data: { "turbo-method": :delete } %>
+                                   data: { "turbo-method": :delete } %>
                 </li>
               </ul>
             </li>
+            <li><%= link_to 'リクエスト一覧', approval_request_path %></li>
           <% else %>
+            <!-- 未ログイン時、新規登録・ログイン表示 -->
             <li><%= link_to '新規登録', signup_path %></li>
             <li><%= link_to 'ログイン', login_path %></li>
           <% end %>
@@ -37,3 +41,13 @@
     </div>
   </div>
 </header>
+
+<!-- ハンバーガーメニューのjquery ここはまだ修正が必要 -->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+  $(document).ready(function() {
+    $('.hamburger-menu').click(function() {
+      $('.header-menu').slideToggle();
+    });
+  });
+</script>

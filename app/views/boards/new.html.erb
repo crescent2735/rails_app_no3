@@ -1,7 +1,9 @@
+<!-- 新規掲示板作成フォーム -->
 <% provide(:title, 'Create board') %>
 <div class="create-board-container">
   <h1 class="create-board-title">掲示板作成</h1>
 
+  <!-- タイトル入力フォーム・作成ボタン -->
   <div class="create-board-form">
     <%= form_with(model: @board) do |f| %>
       <%= render 'shared/error_messages', object: f.object %>

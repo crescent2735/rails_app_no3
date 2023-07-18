@@ -1,3 +1,4 @@
+<!-- 掲示板一覧 タイトルのみリスト表示 -->
 <% provide(:title, 'All boards') %>
 <h1 class="title-with-image">
   <%= image_tag("pV9vsauPOPyjcc31689512346_1689512377.png", class: "left-image") %>
@@ -5,6 +6,7 @@
   <%= image_tag("xmcjchIlBI4jV1g1689512089_1689512195.png", class: "right-image") %>
 </h1>
 
+<!-- いらすとや 画像追加 -->
 <div class="board-images">
   <%= image_tag("https://1.bp.blogspot.com/-IGD1pcj4ZB0/VYJrp4qVaWI/AAAAAAAAuh4/VsP1Hq5qtBo/s800/mizudeppou_kids.png", class: "board-image") %>
   <span class="image-space"></span>
@@ -12,6 +14,7 @@
   <span class="image-space"></span>
   <%= image_tag("https://1.bp.blogspot.com/-FOgVHlaxPKA/X1CLAgKjKhI/AAAAAAABay8/J8FcS8pg_vUYS2S-OIKLJgVtgw9f0jMRACNcBGAsYHQ/s1600/kigurumi_necchusyou_man.png", class: "board-image") %>
 </div>
+<!-- 掲示板タイトル・作成日時を一覧で表示 -->
 <div class="board-lists">
   <% @boards.each do |board| %>
     <div class="board-list">
@@ -25,6 +28,7 @@
   <% end %>
 </div>
 
+<!-- ログイン済みユーザーのみ新規掲示板作成が可能になる -->
 <% if logged_in? %>
   <div class="board-new">
     <%= link_to "新規掲示板作成", new_board_path %>

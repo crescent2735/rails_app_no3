@@ -1,3 +1,4 @@
+<!-- アカウント情報編集画面 -->
 <% provide(:title, "Edit user") %>
 <h1>Update your profile</h1>
 
@@ -6,19 +7,19 @@
     <%= form_with(model: @user) do |f| %>
       <%= render 'shared/error_messages', object: f.object %>
 
-      <%= f.label :name %>
+      <%= f.label :ユーザーネーム %>
       <%= f.text_field :name, class: 'form-control' %>
 
-      <%= f.label :email %>
+      <%= f.label :メールアドレス %>
       <%= f.email_field :email, class: 'form-control' %>
 
-      <%= f.label :password %>
+      <%= f.label :パスワード %>
       <%= f.password_field :password, class: 'form-control' %>
 
-      <%= f.label :password_confirmation, "Confirmation" %>
+      <%= f.label :パスワード（確認） %>
       <%= f.password_field :password_confirmation, class: 'form-control' %>
 
-      <%= f.submit "Save changes", class: "btn btn-primary" %>
+      <%= f.submit "変更を保存する", class: "btn btn-primary" %>
     <% end %>
   </div>
 </div>

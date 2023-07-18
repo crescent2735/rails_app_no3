@@ -12,7 +12,7 @@ class BoardsController < ApplicationController
   def create
     @board = current_user.boards.build(board_params)
     if @board.save
-      flash[:success] = "Board created!"
+      flash[:success] = "掲示板の作成が完了しました!"
       redirect_to root_path
     else
       render 'board/index', status: :unprocessable_entity
@@ -21,6 +21,7 @@ class BoardsController < ApplicationController
 
   def show
     @board = Board.find(params[:id])
+    # ボードに関連するスレッド（ゲーム募集とコメント）を取得し、作成日時で並び替え
     @threads = (GameRecruitment.where(board_id: @board.id) + Comment.where(board_id: @board.id)).sort_by(&:created_at).reverse
   end
 

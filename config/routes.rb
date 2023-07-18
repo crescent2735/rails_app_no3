@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   get '/about', to: 'static_pages#about'
+  get 'approval_request', to: 'static_pages#approval_request'
   get '/how_to_channel', to: 'static_pages#how_to_channel'
   get '/contact', to: 'static_pages#contact'
   get 'requests/new'
