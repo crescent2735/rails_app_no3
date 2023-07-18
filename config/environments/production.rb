@@ -40,7 +40,7 @@ Rails.application.configure do
   # Store uploaded files on the local file system (see config/storage.yml for options).
   config.active_storage.service = :local
 
-  config.hosts << “songstory.onrender.com”
+  config.hosts << “rails_app_no3-1.onrender.com”
 
   config.public_file_server.enabled = ENV['RAILS_SERVE_STATIC_FILES'].present? || ENV['RENDER'].present? 
 
