@@ -38,6 +38,7 @@ class RequestsController < ApplicationController
     if @request.update(request_params)
       # リクエストを許可する処理
       @request.game_recruitment.update(channel_name: @request.game_recruitment.channel_name)
+      # ここに許可したリクエストを非表示にする処理を追加
       redirect_to board_game_recruitment_request_path(@request.game_recruitment.board, @request.game_recruitment), notice: "リクエストを許可しました。"
     else
       # 更新が失敗した場合の処理
