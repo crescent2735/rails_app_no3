@@ -21,7 +21,9 @@ class GameRecruitmentsController < ApplicationController
   def show
     @board = Board.find(params[:board_id])
     @game_recruitment = GameRecruitment.find(params[:id])
-    if @game_recruitment.channel_name.present?
+    @request = Request.find_by(game_recruitment_id: @game_recruitment.id)
+    # リクエストが許可されたらhiddenがtrueになる
+    if @request && @request.hidden == true
       # チャンネル名を表示する処理
       @channel_name = @game_recruitment.channel_name
     else

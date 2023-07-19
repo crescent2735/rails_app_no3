@@ -12,6 +12,7 @@ class RequestsController < ApplicationController
     if @request.save
       # 保存が成功した場合の処理
       redirect_to board_game_recruitment_path(@board, @game_recruitment), notice: "リクエストが送信されました"
+      puts @request.errors.full_messages
     else
       # 保存が失敗した場合の処理
       redirect_to board_game_recruitment_path(@board, @game_recruitment), alert: "リクエストの送信に失敗しました"
@@ -22,11 +23,12 @@ class RequestsController < ApplicationController
   def show
     @game_recruitment = GameRecruitment.find(params[:game_recruitment_id])
     @board = @game_recruitment.board
-    @requests = @game_recruitment.request
-  
-    if current_user && @game_recruitment.user_id == current_user.id
+    @requests = @game_recruitment.request.where(hidden: false)  # hiddenがfalseのリクエストのみ取得
+    @request = Request.find_by(game_recruitment_id: @game_recruitment.id)
+    # ゲーム募集を行ったユーザーのみがリクエストを閲覧できる
+    if @request.game_recruitment.user_id == current_user.id
       # ログイン中のユーザーが作成した募集のリクエストを表示
-      @my_requests = @requests.select { |request| request.user_id == current_user.id }
+      @my_requests = @requests.select { |request| @game_recruitment.user_id == current_user.id }
     else
       @my_requests = []
       puts @request.errors.full_messages
@@ -37,8 +39,7 @@ class RequestsController < ApplicationController
     @request = Request.find(params[:id])
     if @request.update(request_params)
       # リクエストを許可する処理
-      @request.game_recruitment.update(channel_name: @request.game_recruitment.channel_name)
-      # ここに許可したリクエストを非表示にする処理を追加
+      @request.update(hidden: true)
       redirect_to board_game_recruitment_request_path(@request.game_recruitment.board, @request.game_recruitment), notice: "リクエストを許可しました。"
     else
       # 更新が失敗した場合の処理

@@ -21,5 +21,6 @@
     <% else %>
       <%= link_to "ログイン", login_path %>することで参加リクエストの申請が可能になります。
     <% end %>
+    <%= link_to "リクエスト", board_game_recruitment_request_path(@board, @game_recruitment) %>
   </aside>
 </div>
