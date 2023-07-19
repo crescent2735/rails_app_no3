@@ -40,7 +40,7 @@ Rails.application.configure do
   # Store uploaded files on the local file system (see config/storage.yml for options).
   config.active_storage.service = :local
 
-  config.action_mailer.default_url_options = { host: 'rails_paa_no3-1.onrender.com'}
+  config.action_mailer.default_url_options = { host: 'rails_app_no3-1.onrender.com'}
 
   config.hosts << 'rails_app_no3-1.onrender.com'
 
@@ -96,4 +96,6 @@ Rails.application.configure do
 
   # Do not dump schema after migrations.
   config.active_record.dump_schema_after_migration = false
+
+  config.hosts.clear
 end
