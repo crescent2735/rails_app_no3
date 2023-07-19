@@ -15,12 +15,17 @@
         募集人数：<%= @game_recruitment.num_players %>
       </p>
     </section>
-    <!-- ログイン済みユーザーのみ参加リクエスト申請が可能になる -->
     <% if logged_in? %>
-      <%= render partial: 'requests/new' %>
+      <% if @game_recruitment.user_id == current_user.id %>
+        <h2 class="approval_requests">
+          参加希望のユーザーから<%= link_to "リクエスト", board_game_recruitment_request_path(@board, @game_recruitment) %>申請が届いたようです！</br>
+          今すぐ確認してみましょう。
+        </h2>
+      <% else %>
+        <%= render partial: 'requests/new' %>
+      <% end %>
     <% else %>
-      <%= link_to "ログイン", login_path %>することで参加リクエストの申請が可能になります。
+      <%= link_to "ログイン", login_path %> することで参加リクエストの申請が可能になります。
     <% end %>
-    <%= link_to "リクエスト", board_game_recruitment_request_path(@board, @game_recruitment) %>
   </aside>
 </div>
