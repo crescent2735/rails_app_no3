@@ -23,6 +23,7 @@ class UsersController < ApplicationController
       redirect_to @user
     else
       render 'new', status: :unprocessable_entity
+      puts @user.errors.full_messages
     end
   end
 
