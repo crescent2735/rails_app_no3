@@ -1,52 +1,40 @@
 <!-- ヘッダー -->
 <header class="navbar navbar-fixed-top navbar-inverse header-bg">
-  <div class="container">
-    <div class="header-content">
-      <!-- タイトル（アプリ名） -->
-      <h1 class="title"><%= link_to "スプラ３フレンド募集掲示板", about_path, id: "logo" %></h1>
-      <button class="hamburger-menu" type="button" aria-expanded="false">
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-      </button>
-      <!-- ヘッダー内メニュー -->
-      <nav>
-        <ul class="nav navbar-nav navbar-right">
-          <li><%= link_to '掲示板一覧', root_path %></li>
-          <!-- ログイン済みユーザーのみアカウント・新規掲示板作成・リクエスト表示 -->
-          <% if logged_in? %>
-            <li><%= link_to '新規掲示板作成', new_board_path %></li>
-            <li class="dropdown">
-              <a href="#" id="account" class="dropdown-toggle">
-                アカウント <b class="caret"></b>
-              </a>
-              <ul id="dropdown-menu" class="dropdown-menu">
-                <li><%= link_to "プロフィール", current_user %></li>
-                <li><%= link_to "編集", edit_user_path(current_user) %></li>
-                <li class="divider"></li>
-                <li>
-                  <%= link_to "ログアウト", logout_path,
-                                   data: { "turbo-method": :delete } %>
-                </li>
-              </ul>
-            </li>
-          <% else %>
-            <!-- 未ログイン時、新規登録・ログイン表示 -->
-            <li><%= link_to '新規登録', signup_path %></li>
-            <li><%= link_to 'ログイン', login_path %></li>
-          <% end %>
-        </ul>
-      </nav>
-    </div>
+  <div class="header-content">
+    <!-- タイトル（アプリ名） -->
+    <h1 class="title"><%= link_to "スプラ３フレンド募集掲示板", about_path, id: "logo" %></h1>
+    <button class="hamburger-menu" type="button" aria-expanded="false">
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+    </button>
+    <!-- ヘッダー内メニュー -->
+    <nav>
+      <ul class="nav navbar-nav navbar-right">
+        <li><%= link_to '掲示板一覧', root_path %></li>
+        <!-- ログイン済みユーザーのみアカウント・新規掲示板作成・リクエスト表示 -->
+        <% if logged_in? %>
+          <li><%= link_to '新規掲示板作成', new_board_path %></li>
+          <li class="dropdown">
+            <a href="#" id="account" class="dropdown-toggle">
+              アカウント <b class="caret"></b>
+            </a>
+            <ul id="dropdown-menu" class="dropdown-menu">
+              <li><%= link_to "プロフィール", current_user %></li>
+              <li><%= link_to "編集", edit_user_path(current_user) %></li>
+              <li class="divider"></li>
+              <li>
+                <%= link_to "ログアウト", logout_path,
+                                  data: { "turbo-method": :delete } %>
+              </li>
+            </ul>
+          </li>
+        <% else %>
+          <!-- 未ログイン時、新規登録・ログイン表示 -->
+          <li><%= link_to '新規登録', signup_path %></li>
+          <li><%= link_to 'ログイン', login_path %></li>
+        <% end %>
+      </ul>
+    </nav>
   </div>
 </header>
-
-<!-- ハンバーガーメニューのjquery ここはまだ修正が必要 -->
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-<script>
-  $(document).ready(function() {
-    $('.hamburger-menu').click(function() {
-      $('.header-menu').slideToggle();
-    });
-  });
-</script>
