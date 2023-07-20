@@ -1,4 +1,5 @@
 class RequestsController < ApplicationController
+
   def new
     @game_recruitment = GameRecruitment.new
   end
@@ -8,7 +9,6 @@ class RequestsController < ApplicationController
     @game_recruitment = GameRecruitment.find(params[:game_recruitment_id])
     @request = @game_recruitment.request.build(request_params)
     @request.user = current_user
-    
     if @request.save
       # 保存が成功した場合の処理
       redirect_to board_game_recruitment_path(@board, @game_recruitment), notice: "リクエストが送信されました"
@@ -55,9 +55,7 @@ class RequestsController < ApplicationController
   end
 
   private
-
   def request_params
     params.permit(:user_id, :content)
   end
-
 end

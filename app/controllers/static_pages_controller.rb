@@ -1,14 +1,8 @@
 class StaticPagesController < ApplicationController
-  def about
-    
-  end
 
-  def how_to_channel
-  end
+  def about; end
 
-  def contact
-  end
+  def how_to_channel; end
 
-  def approval_request
-  end
+  def contact; end
 end

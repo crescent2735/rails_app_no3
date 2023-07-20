@@ -1,4 +1,5 @@
 class GameRecruitmentsController < ApplicationController
+
   def new
     @game_recruitment = GameRecruitment.new
   end
@@ -7,7 +8,6 @@ class GameRecruitmentsController < ApplicationController
     @board = Board.find(params[:board_id])
     @game_recruitment = @board.game_recruitments.build(game_recruitment_params)
     @game_recruitment.user = current_user
-
     if @game_recruitment.save
       # @game_recruitmentの保存が成功した場合の処理
       redirect_to board_path(@board), notice: "募集が作成されました"
@@ -33,8 +33,7 @@ class GameRecruitmentsController < ApplicationController
   end
 
   private
-    def game_recruitment_params
-      params.require(:game_recruitment).permit(:game_title, :description, :num_players, :channel_name)
-    end
-
+  def game_recruitment_params
+    params.require(:game_recruitment).permit(:game_title, :description, :num_players, :channel_name)
+  end
 end

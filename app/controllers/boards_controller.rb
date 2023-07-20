@@ -25,12 +25,10 @@ class BoardsController < ApplicationController
     @threads = (GameRecruitment.where(board_id: @board.id) + Comment.where(board_id: @board.id)).sort_by(&:created_at).reverse
   end
 
-  def destroy
-  end
+  def destroy; end
 
   private
-
-    def board_params
-      params.require(:board).permit(:title)
-    end
+  def board_params
+    params.require(:board).permit(:title)
+  end
 end
