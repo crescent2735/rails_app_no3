@@ -40,9 +40,12 @@ Rails.application.configure do
   # Store uploaded files on the local file system (see config/storage.yml for options).
   config.active_storage.service = :local
 
-  host = 'rails_app_no3-1.onrender.com'
+  config.action_mailer.raise_delivery_errors = true
 
-  config.action_mailer.default_url_options = { host: host}
+  config.action_mailer.delivery_method = :smtp
+
+  host = 'rails_app_no3-1.onrender.com'
+  config.action_mailer.default_url_options = { host: host, protocol: 'https' }
 
   ActionMailer::Base.smtp_settings = {
     :port           => 587,
