@@ -45,7 +45,7 @@ Rails.application.configure do
   config.action_mailer.delivery_method = :smtp
 
   host = 'rails_app_no3-1.onrender.com'
-  config.action_mailer.default_url_options = { host: host, protocol: 'https' }
+  config.action_mailer.default_url_options = { host: host }
 
   ActionMailer::Base.smtp_settings = {
     :port           => 587,
